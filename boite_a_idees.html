@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boîte à Idées</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Responsive Grid for Idea List */
+        .responsive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+            gap: 15px;
+        }
+
+        /* Responsive Header */
+        header {
+            flex-wrap: wrap; /* Allow wrapping of elements in header */
+            padding: 10px;
+        }
+
+        .logo-container {
+            margin-bottom: 10px; /* Add spacing for mobile */
+        }
+
+        .nav-container ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-container ul li {
+            margin: 5px;
+        }
+
+        /* Adjust Font Sizes for Smaller Screens */
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem); /* Responsive font size */
+        }
+
+        p.quote {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+        }
+
+        button {
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            padding: 10px 20px; /* Adjust padding for smaller devices */
+        }
+
+        /* Pop-up Content Responsive */
+        .popup-content {
+            width: 90%; /* Make pop-up fit smaller screens */
+            max-width: 600px;
+        }
+
+        /* Responsive Footer for Pagination */
+        footer.pagination {
+            flex-wrap: wrap; /* Wrap buttons for smaller screens */
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="comité_design_logo.png" alt="Logo Comité Design" class="logo">
+        </div>
+        <div class="nav-container">
+            <nav>
+                <ul>
+                    <li><a href="#" id="home-link">Accueil</a></li>
+                    <li><a href="#" id="history-link">Historique des idées</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="home-page">
+        <h1>Bienvenue dans la boîte à idées 💡</h1>
+        <p class="quote">"Les grandes idées naissent toujours dans un esprit collectif et ouvert"</p>
+        <p class="author">Albert Einstein</p>
+        <button id="idea-button">J’ai une idée et je veux contribuer !</button>
+    </main>
+
+    <main id="history-page" style="display: none;">
+        <h1>
+            Historique des idées 
+            <span class="sort-icon">⇅</span>
+        </h1>
+        <div class="idea-list responsive-grid">
+            <!-- Les idées apparaîtront ici dynamiquement -->
+        </div>
+        <footer class="pagination">
+            <button id="prev-page" disabled>«</button>
+            <span id="current-page">1</span>
+            <button id="next-page" disabled>»</button>
+        </footer>
+    </main>
+
+    <!-- Pop-up pour soumettre une idée -->
+    <div id="idea-popup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <h2>Hâte de voir ce que tu as à nous proposer 😊</h2>
+            <textarea id="idea-input" placeholder="Écris ton idée ici..."></textarea>
+            <div class="popup-buttons">
+                <button id="submit-idea">Envoyer</button>
+                <button id="close-popup">Retour</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up de remerciement -->
+    <div id="thank-you-popup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <h2>Merci beaucoup 🙏🏾</h2>
+            <p>C'est ce qui nous aide à nous améliorer. Sur ce, au plaisir de te revoir pour une nouvelle idée 👋🏾</p>
+            <button id="close-thank-you">Fermer</button>
+        </div>
+    </div>
+
+    <!-- Pop-up pour afficher une idée -->
+    <div id="idea-view-popup" class="popup" style="display: none;">
+        <div class="popup-content fixed-popup">
+            <h2>Alors, envie de voir à quoi ressemble l'innovation ? 🚀✨</h2>
+            <div id="idea-content" class="scrollable-content"></div>
+            <div class="popup-buttons">
+                <button id="close-view-popup">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const ideas = []; 
+            const ideaList = document.querySelector(".idea-list");
+            const ideaInput = document.getElementById("idea-input");
+            const submitIdeaButton = document.getElementById("submit-idea");
+            const ideaPopup = document.getElementById("idea-popup");
+            const thankYouPopup = document.getElementById("thank-you-popup");
+            const closeThankYouButton = document.getElementById("close-thank-you");
+            const ideaViewPopup = document.getElementById("idea-view-popup");
+            const ideaContent = document.getElementById("idea-content");
+            const closeViewPopupButton = document.getElementById("close-view-popup");
+            const prevPageButton = document.getElementById("prev-page");
+            const nextPageButton = document.getElementById("next-page");
+            const currentPageSpan = document.getElementById("current-page");
+
+            let currentPage = 1;
+            const itemsPerPage = 5;
+
+            function renderIdeas() {
+                ideaList.innerHTML = ""; 
+                const start = (currentPage - 1) * itemsPerPage;
+                const end = start + itemsPerPage;
+                const ideasToShow = ideas.slice(start, end);
+
+                ideasToShow.forEach((idea) => {
+                    const ideaItem = document.createElement("div");
+                    ideaItem.classList.add("idea-item");
+                    ideaItem.style.cursor = "pointer";
+
+                    const ideaText = document.createElement("span");
+                    ideaText.classList.add("idea-text");
+                    ideaText.textContent = idea.text.slice(0, 30) + "...";
+
+                    const ideaDate = document.createElement("span");
+                    ideaDate.classList.add("idea-date");
+                    ideaDate.textContent = `Soumis le ${idea.date}`;
+
+                    ideaItem.appendChild(ideaText);
+                    ideaItem.appendChild(ideaDate);
+
+                    ideaItem.addEventListener("click", () => {
+                        ideaContent.textContent = idea.text; 
+                        ideaViewPopup.style.display = "flex";
+                    });
+
+                    ideaList.appendChild(ideaItem);
+                });
+
+                prevPageButton.disabled = currentPage === 1;
+                nextPageButton.disabled = end >= ideas.length;
+                currentPageSpan.textContent = currentPage;
+            }
+
+            submitIdeaButton.addEventListener("click", function () {
+                const text = ideaInput.value.trim();
+                if (text) {
+                    ideas.unshift({
+                        text: text,
+                        date: new Date().toLocaleDateString(),
+                    });
+                    ideaInput.value = "";
+                    ideaPopup.style.display = "none";
+                    thankYouPopup.style.display = "flex";
+                    renderIdeas();
+                }
+            });
+
+            closeThankYouButton.addEventListener("click", function () {
+                thankYouPopup.style.display = "none";
+            });
+
+            closeViewPopupButton.addEventListener("click", function () {
+                ideaViewPopup.style.display = "none";
+            });
+
+            prevPageButton.addEventListener("click", function () {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderIdeas();
+                }
+            });
+
+            nextPageButton.addEventListener("click", function () {
+                if ((currentPage - 1) * itemsPerPage + itemsPerPage < ideas.length) {
+                    currentPage++;
+                    renderIdeas();
+                }
+            });
+
+            document.getElementById("idea-button").addEventListener("click", function () {
+                ideaPopup.style.display = "flex";
+            });
+
+            document.getElementById("close-popup").addEventListener("click", function () {
+                ideaPopup.style.display = "none";
+            });
+
+            document.getElementById("home-link").addEventListener("click", function () {
+                document.getElementById("home-page").style.display = "block";
+                document.getElementById("history-page").style.display = "none";
+            });
+
+            document.getElementById("history-link").addEventListener("click", function () {
+                document.getElementById("home-page").style.display = "none";
+                document.getElementById("history-page").style.display = "block";
+                renderIdeas();
+            });
+        });
+    </script>
+</body>
+</html>
