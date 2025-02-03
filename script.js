@@ -1,101 +1,112 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const homePage = document.getElementById("home-page");
-    const historyPage = document.getElementById("history-page");
+    const jsonBinApiKey = '$2a$10$dp5UO108x.5VkCxGtZ/lYeDMCop61PGhq1iJQe..z5ClGTKLDgyGW';
+    const jsonBinUrl = 'https://api.jsonbin.io/v3/b/67a0f35aad19ca34f8f93001';
+    const messageDiv = document.getElementById('message');
     const ideaList = document.querySelector(".idea-list");
-    const prevPageButton = document.getElementById("prev-page");
-    const nextPageButton = document.getElementById("next-page");
-    const currentPageSpan = document.getElementById("current-page");
-    const ideaInput = document.getElementById("idea-input");
-    const popup = document.getElementById("idea-popup");
-    const thankYouPopup = document.getElementById("thank-you-popup");
-    const closePopupButton = document.getElementById("close-popup");
-    const closeThankYouButton = document.getElementById("close-thank-you");
-    const ideasPerPage = 5; // Limite à 5 idées par page
-    let ideas = []; // Liste des idées
-    let currentPage = 1;
+    const ideaInput = document.getElementById('ideaInput');
+    const showIdeaFormButton = document.getElementById('showIdeaFormButton');
+    const ideaFormContainer = document.getElementById('ideaFormContainer');
 
-    // Fonction pour afficher les idées pour la page courante
-    function showPage(page) {
-        const startIndex = (page - 1) * ideasPerPage;
-        const endIndex = startIndex + ideasPerPage;
-        const ideasToShow = ideas.slice(startIndex, endIndex);
+    const homePage = document.getElementById('home-page');
+    const historyPage = document.getElementById('history-page');
 
-        ideaList.innerHTML = ""; // Réinitialise la liste d'idées
+    let ideas = [];
 
-        ideasToShow.forEach((idea) => {
+    // Charger les idées existantes depuis JSONBin
+    async function loadIdeas() {
+        try {
+            const response = await fetch(jsonBinUrl, {
+                headers: {
+                    'X-Master-Key': jsonBinApiKey,
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error("Erreur lors du chargement des idées.");
+            }
+
+            const data = await response.json();
+            ideas = data.record.ideas || [];
+            renderIdeas();  // Affiche immédiatement les idées après le chargement
+        } catch (error) {
+            console.error('Erreur de chargement:', error);
+        }
+    }
+
+    // Afficher les idées dans la section "Historique des idées"
+    function renderIdeas() {
+        ideaList.innerHTML = "";  // Réinitialise la liste
+
+        ideas.forEach((idea) => {
             const ideaItem = document.createElement("div");
             ideaItem.className = "idea-item";
             ideaItem.innerHTML = `
-                <span class="idea-text">${idea.text}</span>
-                <span class="idea-date">Soumis le ${idea.date}</span>
+                <div class="idea-text">${idea.idea}</div>
+                <div class="idea-date">Soumis le ${idea.date}</div>
             `;
             ideaList.appendChild(ideaItem);
         });
-
-        currentPageSpan.textContent = page;
-
-        // Gestion des boutons de pagination
-        prevPageButton.disabled = page === 1; // Désactiver "Précédent" si on est sur la première page
-        nextPageButton.disabled = endIndex >= ideas.length; // Désactiver "Suivant" si on est sur la dernière page
     }
 
-    // Fonction pour ajouter une nouvelle idée
-    function addIdea(text, date) {
-        ideas.unshift({ text, date }); // Ajouter l'idée au début du tableau pour que les plus récentes soient en premier
-        currentPage = 1; // Revenir à la première page
-        showPage(currentPage); // Afficher les idées
+    // Soumettre une nouvelle idée
+    async function submitIdea() {
+        const idea = ideaInput.value.trim();
+
+        if (idea === "") {
+            messageDiv.textContent = "Veuillez entrer une idée avant de la soumettre.";
+            messageDiv.style.color = "red";
+            return;
+        }
+
+        const newIdea = { idea: idea, date: new Date().toLocaleString() };
+        ideas.unshift(newIdea);
+
+        try {
+            const response = await fetch(jsonBinUrl, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Master-Key': jsonBinApiKey,
+                    'X-Bin-Versioning': 'false'
+                },
+                body: JSON.stringify({ ideas })
+            });
+
+            if (response.ok) {
+                messageDiv.textContent = "Votre idée a été soumise avec succès !";
+                messageDiv.style.color = "green";
+                ideaInput.value = "";  // Réinitialise la zone de texte
+                renderIdeas();  // Met à jour l'affichage des idées
+            } else {
+                messageDiv.textContent = "Une erreur s'est produite lors de la soumission.";
+                messageDiv.style.color = "red";
+            }
+        } catch (error) {
+            messageDiv.textContent = "Erreur de connexion au serveur.";
+            messageDiv.style.color = "red";
+        }
     }
 
     // Navigation entre les pages
-    prevPageButton.addEventListener("click", () => {
-        if (currentPage > 1) {
-            currentPage--;
-            showPage(currentPage);
-        }
+    document.getElementById('home-link').addEventListener('click', () => {
+        homePage.style.display = 'block';
+        historyPage.style.display = 'none';
     });
 
-    nextPageButton.addEventListener("click", () => {
-        if ((currentPage - 1) * ideasPerPage + ideasPerPage < ideas.length) {
-            currentPage++;
-            showPage(currentPage);
-        }
+    document.getElementById('history-link').addEventListener('click', () => {
+        homePage.style.display = 'none';
+        historyPage.style.display = 'block';
+        renderIdeas();  // Affiche les idées lors de la navigation vers la page historique
     });
 
-    // Navigation entre Accueil et Historique des idées
-    document.getElementById("home-link").addEventListener("click", () => {
-        homePage.style.display = "block";
-        historyPage.style.display = "none";
+    showIdeaFormButton.addEventListener('click', () => {
+        ideaFormContainer.style.display = 'block';
+        showIdeaFormButton.style.display = 'none';
     });
 
-    document.getElementById("history-link").addEventListener("click", () => {
-        homePage.style.display = "none";
-        historyPage.style.display = "block";
-        showPage(currentPage);
-    });
+    document.getElementById('submitIdeaButton').addEventListener('click', submitIdea);
 
-    // Gestion de l'envoi d'une nouvelle idée
-    document.getElementById("submit-idea").addEventListener("click", () => {
-        const ideaText = ideaInput.value.trim();
-        if (ideaText) {
-            const currentDate = new Date().toLocaleDateString();
-            addIdea(ideaText, currentDate);
-            ideaInput.value = ""; // Réinitialiser le champ texte
-            popup.style.display = "none"; // Fermer le pop-up
-            thankYouPopup.style.display = "flex"; // Afficher le pop-up de remerciement
-        }
-    });
-
-    // Fermer les pop-ups
-    closePopupButton.addEventListener("click", () => {
-        popup.style.display = "none";
-    });
-
-    closeThankYouButton.addEventListener("click", () => {
-        thankYouPopup.style.display = "none";
-    });
-
-    // Ouvrir le pop-up pour soumettre une idée
-    document.getElementById("idea-button").addEventListener("click", () => {
-        popup.style.display = "flex";
-    });
+    // Charger les idées au démarrage
+    loadIdeas();
 });
