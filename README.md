@@ -6,7 +6,7 @@ Ce site a été conçu pour permettre aux étudiants de **proposer, partager et 
 > 🎨 Design d’affiches ? 🎥 Idée de vidéo ? 🎭 Concept pour un événement ?  
 > Ce site est là pour recueillir toute votre créativité.
 
-🔗 [Accéder au site en ligne](https://ahmadouniass.github.io/)  
+🔗 [Accéder au site en ligne](https://ahmadouniass.github.io/Comite-Design)  
 📦 Données dynamiques hébergées sur [JSONBin.io](https://jsonbin.io/)
 
 ---
