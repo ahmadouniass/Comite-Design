@@ -1,7 +1,7 @@
-# 💡 Boîte à Idées – Comité Design ENSAE
+# 💡  Comité Design ENSAE (Toujours en cours)
 
-Bienvenue sur le dépôt GitHub du site **Boîte à Idées** du **Comité Design de l’ENSAE** !  
-Ce site a été conçu pour permettre aux étudiants de **proposer, partager et voter** pour des idées créatives au sein du comité.
+Bienvenue sur le dépôt GitHub du site du **Comité Design de l’ENSAE** !  
+Ce site a été conçu pour permettre aux étudiants de **proposer, partager et voter** pour des idées créatives au sein du comité. Il constitue unee vitrine pour les productions du Comité Design.
 
 > 🎨 Design d’affiches ? 🎥 Idée de vidéo ? 🎭 Concept pour un événement ?  
 > Ce site est là pour recueillir toute votre créativité.
