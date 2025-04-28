@@ -1,94 +1,271 @@
+/* Style global */
 body {
-    font-family: 'Inter', sans-serif;
     margin: 0;
-    padding: 0;
-    background: linear-gradient(to right, #e3f2fd, #ffffff);
-    color: #333;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #0f172a, #1e293b);
+    color: white;
 }
 
-header {
+/* Header Landing */
+.landing-header {
+    min-height: 100vh;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #0288d1;
-    color: white;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(145deg, #1e293b, #0f172a);
 }
 
-.logo {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+.landing-content .logo {
+    width: 120px;
+    margin-bottom: 20px;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
+.landing-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.landing-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #cbd5e1;
+}
+
+/* Groupement des boutons */
+.buttons {
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
 }
 
-nav ul li a {
-    color: white;
+/* Style unifié pour tous les boutons */
+.action-button {
+    padding: 1rem 2rem;
+    width: 220px; /* ➔ Taille identique pour tous */
+    text-align: center;
     text-decoration: none;
+    border-radius: 30px;
+    font-size: 1rem;
     font-weight: bold;
-    transition: color 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    color: white;
 }
 
-nav ul li a:hover {
-    color: #ffcc80;
+/* Styles spécifiques par type */
+.explore-button {
+    background-color: #6366f1;
+}
+.explore-button:hover {
+    background-color: #4f46e5;
+    transform: scale(1.05);
 }
 
-main {
-    padding: 40px;
+.idea-button {
+    background-color: #22c55e;
+}
+.idea-button:hover {
+    background-color: #16a34a;
+    transform: scale(1.05);
+}
+
+.order-button {
+    background-color: #f59e0b;
+}
+.order-button:hover {
+    background-color: #d97706;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .landing-content h1 {
+        font-size: 2rem;
+    }
+    .landing-content p {
+        font-size: 1rem;
+    }
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}/* Header de la boîte à idées */
+.idea-header {
+    background: linear-gradient(145deg, #0f172a, #1e293b);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
     text-align: center;
 }
 
-button {
-    background-color: #0288d1;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.logo-container .logo {
+    width: 100px;
+    margin-bottom: 10px;
 }
 
-button:hover {
-    background-color: #0277bd;
+.nav-container nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
 }
 
-.idea-list {
+.nav-container nav ul li {
+    margin: 0 10px;
+}
+
+.nav-container nav ul li a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-container nav ul li a:hover,
+.nav-container nav ul li a.active {
+    color: #22c55e;
+}
+
+/* Citation */
+.quote-section {
+    background: #1e293b;
+    text-align: center;
+    padding: 2rem;
+}
+
+.quote {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    color: #facc15;
+}
+
+/* Formulaire */
+.idea-form-section {
+    background: #334155;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+#idea-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#idea-input {
+    width: 80%;
+    max-width: 500px;
+    padding: 1rem;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+}
+
+#idea-form button {
+    padding: 1rem 2rem;
+    background-color: #22c55e;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#idea-form button:hover {
+    background-color: #16a34a;
+    transform: scale(1.05);
+}
+
+/* Message après envoi */
+#message {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #38bdf8;
+}
+
+/* Liste des idées */
+.submitted-ideas {
+    background: #475569;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.submitted-ideas h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    margin-top: 20px;
+    padding: 2rem 0;
 }
 
 .idea-item {
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    transition: box-shadow 0.3s;
+    background: #0f172a;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    color: #e0f2fe;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: left;
 }
 
-.idea-item:hover {
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+/* Responsive ajustements */
+@media (max-width: 768px) {
+    #idea-input {
+        width: 90%;
+    }
 }
 
-.idea-text {
-    font-weight: bold;
+/* Animations d'arrivée */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-textarea {
-    width: 100%;
-    height: 200px; /* Augmenté à 200px pour plus de confort */
-    padding: 15px; /* Augmenté pour plus de confort */
-    font-size: 16px; /* Augmenté légèrement */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    resize: vertical; /* Permet à l'utilisateur de redimensionner verticalement */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Application spécifique */
+.animate-logo {
+    animation: fadeInDown 1s ease forwards;
+}
+
+.animate-title {
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.3s;
+}
+
+.animate-text {
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.6s;
+}
+
+/* Animation des boutons */
+.buttons a {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+.buttons a:nth-child(1) { animation-delay: 0.8s; }
+.buttons a:nth-child(2) { animation-delay: 1s; }
+.buttons a:nth-child(3) { animation-delay: 1.2s; }
+
+/* Hover dynamique boutons */
+.action-button:hover {
+    transform: scale(1.07) rotate(-1deg);
 }

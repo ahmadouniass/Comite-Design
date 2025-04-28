@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boîte à Idées - Comité Design ENSAE</title>
+
+  <!-- Import Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style_bi.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <img src="comité_design_logo.png" alt="Logo Comité Design" class="logo">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="creations.html">Nos créations</a></li>
+          <li><a href="boite_idees.html" class="active">Boîte à idées</a></li>
+          <li><a href="commander.html">Commander</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="container hero-content">
+      <h1 class="hero-title">"Chaque grande création commence par une idée."</h1>
+      <button id="open-modal" class="main-button">Proposer une idée</button>
+      <div class="scroll-down">
+        <span>&#x2193;</span>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Liste des idées -->
+  <section class="ideas-section">
+    <div class="container">
+      <h2>Vos idées inspirantes</h2>
+      <div id="ideas-list" class="ideas-grid">
+        <!-- Les idées apparaîtront ici -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Pop-up Modal -->
+  <div id="idea-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Proposez votre idée</h3>
+      <form id="idea-form">
+        <textarea id="idea-input" placeholder="Décrivez votre idée..." required></textarea>
+        <button type="submit" class="submit-button">Envoyer</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="boite_idees.js"></script>
+</body>
+</html>

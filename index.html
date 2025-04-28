@@ -3,44 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boîte à Idées</title>
+    <title>Accueil - Comité Design ENSAE</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="comité_design_logo.png">
 </head>
 <body>
-    <header>
-        <div class="logo-container">
-            <img src="comité_design_logo.png" alt="Logo Comité Design" class="logo">
+
+    <!-- Partie Accueil / Introduction -->
+    <header class="landing-header">
+        <div class="landing-content">
+            <img src="comité_design_logo.png" alt="Logo Comité Design" class="logo animate-logo">
+            <h1 class="animate-title">L’imagination au service de l’inspiration</h1>
+            <p class="animate-text">Découvrez nos créations et plongez dans l’univers du Comité Design de l'ENSAE.</p>
+        
+            <div class="buttons">
+                <a href="creations.html" class="action-button explore-button">Explorer nos créations</a>
+                <a href="boite_idees.html" class="action-button idea-button">Proposer une idée</a>
+                <a href="commander.html" class="action-button order-button">Commander un visuel</a>
+            </div>
         </div>
-        <div class="nav-container">
-            <nav>
-                <ul>
-                    <li><a href="#" id="home-link">Accueil</a></li>
-                    <li><a href="#" id="history-link">Historique des idées</a></li>
-                </ul>
-            </nav>
-        </div>
+        
     </header>
 
-    <main id="home-page">
-        <h1>Bienvenue dans la boîte à idées 💡</h1>
-        <p class="quote">"Les grandes idées naissent toujours dans un esprit collectif et ouvert"</p>
-        <p class="author">Albert Einstein</p>
-
-        <button id="showIdeaFormButton">J’ai une idée et je veux contribuer !</button>
-
-        <div id="ideaFormContainer" style="display: none;">
-            <textarea id="ideaInput" placeholder="Écris ton idée ici..."></textarea>
-            <button id="submitIdeaButton">Soumettre l'idée</button>
-            <div id="message"></div>
-        </div>
-    </main>
-
-    <main id="history-page" style="display: none;">
-        <h1>Historique des idées</h1>
-        <div class="idea-list"></div>
-    </main>
-
-    <script src="script.js"></script>
 </body>
 </html>
