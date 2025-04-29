@@ -1,12 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commander</title>
-    <h1>We are working on it. Very soon!</h1>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commander un visuel</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Style principal -->
+  <link rel="stylesheet" href="style_com.css">
 </head>
+
 <body>
-    
+
+  <!-- Header commun -->
+  <header class="main-header">
+    <div class="container header-container">
+      <img src="comité_design_logo.png" alt="Logo Comité Design" class="logo">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="creations.html">Nos créations</a></li>
+          <li><a href="boite_idees.html">Boîte à idées</a></li>
+          <li><a href="commander.html" class="active">Commander</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Section commande -->
+  <section class="commande-section">
+    <div class="container">
+      <h1>Contactez-nous</h1>
+
+      <div class="info-box">
+        <p>
+          📌 <strong>Modalités de commande :</strong><br>
+          Merci de commander au minimum 2 jours à l’avance. Soyez précis dans la description de votre besoin et indiquez un délai antérieur à votre échéance réelle afin de prévoir des révisions si nécessaire.
+        </p>
+      </div>
+
+      <form action="https://formspree.io/f/movdjllb" method="POST" class="commande-form">
+        
+        <label for="theme">À quoi servira ce visuel ? *</label>
+        <input type="text" id="theme" name="theme" required>
+
+        <label for="echeance">Échéance souhaitée *</label>
+        <input type="date" id="echeance" name="echeance" required>
+
+        <label>Format de contenu souhaité *</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="format[]" value="Document"> Document</label>
+          <label><input type="checkbox" name="format[]" value="Vidéo"> Vidéo</label>
+          <label><input type="checkbox" name="format[]" value="Affiche"> Affiche</label>
+          <label>
+            <input type="checkbox" name="format[]" value="Autre" id="format-autre"> Autre
+          </label>
+        </div>
+
+        <div id="autre-format-container" class="fade-in-box">
+          <label for="autre-format">Veuillez préciser le format souhaité :</label>
+          <input type="text" id="autre-format" name="autre_format">
+        </div>
+
+        <label for="details">Détails liés à la commande *</label>
+        <textarea id="details" name="details" rows="6" required></textarea>
+
+        <label for="couleurs">Couleurs souhaitables à inclure (optionnel)</label>
+        <input type="text" id="couleurs" name="couleurs">
+
+        <label for="whatsapp">Contact WhatsApp (optionnel)</label>
+        <input type="tel" id="whatsapp" name="whatsapp" placeholder="+221...">
+
+        <label for="lien">Lien utile (Drive, maquette, etc.) (optionnel)</label>
+        <input type="url" id="lien" name="lien" placeholder="https://...">
+
+        <label for="personne">Souhaiteriez-vous une personne du comité en particulier ? (optionnel)</label>
+        <input type="text" id="personne" name="personne">
+
+        <label for="demembrement">Démembrement de l’AES *</label>
+        <select id="demembrement" name="demembrement" required>
+          <option value="">-- Sélectionnez --</option>
+          <option value="Président de l'AES">Président de l'AES</option>
+          <option value="Comité de Régulation">Comité de Régulation</option>
+          <option value="Comité du Diné de Gala">Comité du Diné de Gala</option>
+          <option value="Comité Culturel">Comité Culturel</option>
+          <option value="Club Leadership">Club Leadership</option>
+          <option value="Club Informatique">Club Informatique</option>
+          <option value="Club Anglais">Club Anglais</option>
+          <option value="Club Presse">Club Presse</option>
+          <option value="CFED">CFED</option>
+          <option value="BSA">BSA</option>
+          <option value="Secrétaire Chargé aux Affaires Sportives">Secrétaire Chargé aux Affaires Sportives</option>
+          <option value="Secrétaire Chargé à la Communication">Secrétaire Chargé à la Communication</option>
+        </select>
+
+      
+
+        <button type="submit" class="submit-button">Envoyer la commande</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- JS pour afficher/masquer champ "Autre" -->
+  <script>
+    const checkboxAutre = document.getElementById('format-autre');
+    const autreContainer = document.getElementById('autre-format-container');
+
+    autreContainer.style.display = 'none';
+
+    checkboxAutre.addEventListener('change', () => {
+      if (checkboxAutre.checked) {
+        autreContainer.style.display = 'block';
+        autreContainer.classList.add('fade-in');
+      } else {
+        autreContainer.style.display = 'none';
+        autreContainer.classList.remove('fade-in');
+        document.getElementById('autre-format').value = '';
+      }
+    });
+    window.addEventListener('pageshow', function(event) {
+    const form = document.getElementById('commande-form');
+    if (form) form.reset();
+
+    // Masquer aussi le champ "autre" s’il était visible
+    const autreContainer = document.getElementById('autre-format-container');
+    if (autreContainer) autreContainer.style.display = 'none';
+  });
+  </script>
+
+  
+
 </body>
 </html>

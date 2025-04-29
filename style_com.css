@@ -1,0 +1,243 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    font-family: 'Lora', serif;
+    background: linear-gradient(to bottom, #0f172a, #1e293b);
+    color: white;
+  }
+  
+  /* Container */
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Header Premium */
+  .main-header {
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(5px);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    animation: fadeInTop 1s ease forwards;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 60px;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .nav-links li {
+    position: relative;
+  }
+  
+  .nav-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #22c55e;
+    left: 0;
+    bottom: -5px;
+    transition: width 0.4s ease;
+  }
+  
+  .nav-links a:hover::after,
+  .nav-links a.active::after {
+    width: 100%;
+  }
+  
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #22c55e;
+  }
+  
+  /* Animation header */
+  @keyframes fadeInTop {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* SECTION COMMANDE */
+  .commande-section {
+    padding: 5rem 2rem;
+    background-color: #1e293b;
+    color: #e2e8f0;
+  }
+  
+  .commande-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #22c55e;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Info box */
+  .info-box {
+    background-color: #0f172a;
+    border-left: 6px solid #22c55e;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    line-height: 1.7;
+  }
+  
+  /* Formulaire */
+  .commande-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .commande-form label {
+    font-weight: bold;
+    color: #cbd5e1;
+  }
+  
+  .commande-form input[type="text"],
+  .commande-form input[type="email"],
+  .commande-form input[type="date"],
+  .commande-form input[type="tel"],
+  .commande-form input[type="url"],
+  .commande-form textarea,
+  .commande-form select {
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #334155;
+    color: white;
+    outline: none;
+    transition: background 0.3s ease;
+    font-family: 'Lora', serif;
+  }
+  
+  
+  .commande-form input:focus,
+  .commande-form textarea:focus,
+  .commande-form select:focus {
+    background-color: #475569;
+  }
+  
+  .commande-form textarea {
+    resize: vertical;
+  }
+  
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #0f172a;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: 1px solid #22c55e;
+    transition: background 0.3s ease;
+  }
+  
+  .checkbox-group input[type="checkbox"] {
+    accent-color: #22c55e;
+  }
+  
+  .checkbox-group label:hover {
+    background: #22c55e;
+    color: white;
+  }
+  
+  .submit-button {
+    background-color: #22c55e;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #16a34a;
+    transform: scale(1.05);
+  }
+
+/* Fade in animation */
+@keyframes fadeInBox {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .fade-in-box {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+  }
+  
+  .fade-in-box.fade-in {
+    animation: fadeInBox 0.5s ease forwards;
+    opacity: 1;
+    max-height: 100px;
+    margin-top: 1rem;
+  }
+  
+  /* Notification après envoi */
+.form-toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #22c55e;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    z-index: 1000;
+  }
+  
+  .form-toast.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
