@@ -233,3 +233,8 @@
     z-index: 3;
   }
   
+  .nav-links {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+  }
+  
