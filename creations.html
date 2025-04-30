@@ -1,12 +1,202 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creations</title>
-    <h1>We are working on it. Very soon!</h1>
-</head>
-<body>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nos créations</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="style_crea.css">
     
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <img src="comité_design_logo.png" alt="Logo Comité Design" class="logo">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="creations.html" class="active">Nos créations</a></li>
+          <li><a href="boite_idees.html">Boîte à idées</a></li>
+          <li><a href="commander.html">Commander</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Intro -->
+  <section class="intro-section">
+    <div class="container">
+      <h1>Nos créations</h1>
+      <p>Explorez nos plus beaux visuels réalisés avec passion par notre équipe.</p>
+    </div>
+  </section>
+
+  <!-- Galerie Photos -->
+  <section class="creations-section">
+    <div class="container">
+      <h2>🎨 Visuels & Affiches</h2>
+
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/10_01_2025_Proposition_2_Culture_Générale.jpg" alt="10_01_2025_Proposition_2_Culture_Générale">
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/Athlétisme.png" alt="Athlétisme">
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/Debat.jpg" alt="Debat">
+            </div>
+          </div>
+      
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/Journée_Athlétisme.png" alt="Journée_Athlétisme">
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/Lstening.jpg" alt="Lstening">
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/Noel (1).jpg" alt="Noel (1)">
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/Noel (2).jpg" alt="Noel (2)">
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/Noel (3).jpg" alt="Noel (3)">
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/Nouvel_an (1).jpg" alt="Nouvel_an (1)">
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/Nouvel_an (2).jpg" alt="Nouvel_an (2)">
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/Nouvel_an (3).jpg" alt="Nouvel_an (3)">
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/Nouvel_an (4).jpg" alt="Nouvel_an (4)">
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/Nouvel_an (5).jpg" alt="Nouvel_an (5)">
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/Nouvel_an (6).jpg" alt="Nouvel_an (6)">
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/Nouvel_an (7).jpg" alt="Nouvel_an (7)">
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/Proposition_Panel.jpg" alt="Proposition_Panel">
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/Semaine_culturelle.png" alt="Semaine_culturelle">
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/Semaine_culturelle2.png" alt="Semaine_culturelle2">
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <div class="image-card">
+              <img src="images/WhatsApp Image 2025-03-14 à 09.37.37_0469354e.jpg" alt="WhatsApp Image">
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const swiper = new Swiper('.swiper-container', {
+        loop: true,
+        centeredSlides: true,
+        slidesPerView: 3,
+        spaceBetween: 0,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+          0: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: 3,
+          }
+        }
+      });
+    });
+  </script>
+  
+  
 </body>
 </html>
