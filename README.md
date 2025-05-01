@@ -1,65 +1,75 @@
-# 🌟 Site Web - Comité Design ENSAE
+# 🎨 Site Officiel – Comité Design ENSAE
 
-Ce site présente les réalisations et services proposés par le Comité Design de l'ENSAE, et permet à la communauté :
-
-- de **proposer des idées créatives** via une boîte à idées dynamique
-- de **commander un visuel personnalisé** via un formulaire professionnel
-- de **consulter nos créations** dans une galerie à venir
+Bienvenue sur le dépôt du site web du **Comité Design de l'ENSAE**, conçu pour présenter nos créations graphiques, recueillir les idées de la communauté, et permettre des commandes de visuels.
 
 ---
 
-## 🚧 Statut
+## 🧭 Pages disponibles
 
-> 🔨 **Le site est actuellement en cours de développement.**
-Certaines fonctionnalités ou pages peuvent encore évoluer.
-
-🔗 [Accéder au site en ligne](https://ahmadouniass.github.io/Comite-Design)  
----
-
-## 🎨 Pages disponibles
-
-### ✅ Accueil (`index.html`)
-- Présentation du comité
-- Lien vers les principales pages
-
-### ✅ Boîte à Idées (`boite_idees.html`)
-- Interface fluide pour soumettre des idées
-- Idées **stockées dynamiquement via [JSONBin](https://jsonbin.io)** ✅
-- Modal de soumission + affichage dynamique instantané
-- Stockage sans backend, 100% JavaScript
-
-### ✅ Commander (`commander.html`)
-- Formulaire complet pour commander un visuel (affiche, logo, vidéo, etc.)
-- Gestion des options et des détails (échéance, préférences, couleurs)
-- Envoi du formulaire via [Formspree](https://formspree.io) ✅
-- Confirmation animée sur la même page (pas de redirection)
-
-### 🚧 Nos créations (`creations.html`)
-- Galerie dynamique avec filtres et pop-up à venir
+- [`index.html`](index.html) – Page d’accueil
+- [`creations.html`](html/creations.html) – Galerie dynamique (visuels + vidéos)
+- [`boite_idees.html`](html/boite_idees.html) – Boîte à idées (formulaire connecté à JSONBin)
+- [`commander.html`](html/commander.html) – Commander un visuel (formulaire Formspree)
 
 ---
 
-## ⚙️ Technologies utilisées
+## 🖼️ Fonctionnalités clés
 
-- 🧩 **HTML / CSS / JavaScript**
-- 🔐 **JSONBin** pour stocker les idées sans backend
-- 📨 **Formspree** pour l'envoi de formulaires sans serveur
-- 🎨 **Polices** : [Google Fonts - Lora & Poppins](https://fonts.google.com)
-
----
-
-## 💡 À venir
-
-- Intégration complète de la **galerie "Nos créations"**
-- Amélioration de l’UX mobile
-- Ajout d’un **système de réponse automatisée** pour les commandes
-- Refonte du footer et ajout de liens de contact
+| Fonction | Détail |
+|----------|--------|
+| 🖼️ Galerie visuelle | Slider Swiper fluide avec effet de flou latéral |
+| 🎥 Galerie vidéo | Intégration de vidéos Google Drive en slider |
+| 💡 Boîte à idées | Formulaire connecté à [JSONBin.io](https://jsonbin.io) |
+| 🧾 Formulaire commande | Formulaire stylé connecté à [Formspree.io](https://formspree.io) |
+| 📱 Responsive design | Entièrement adapté aux mobiles |
+| 🔗 Favicon + Footer pro | Apparence soignée avec crédits et icônes sociales |
 
 ---
 
-## 🤝 Contribuer
+## 📦 Technologies utilisées
 
- 
-N’hésitez pas à proposer des idées, des corrections ou des améliorations  en ouvrant une issue.
+- `HTML`, `CSS`, `JavaScript`
+- [Swiper.js](https://swiperjs.com/) – pour les sliders d’images et vidéos
+- [JSONBin](https://jsonbin.io/) – base d’idées utilisateur
+- [Formspree](https://formspree.io/) – formulaire sans backend
+- [Google Drive](https://drive.google.com) – pour héberger les vidéos
+
+---
+
+## 🚀 Lancer en local
+
+```bash
+git clone https://github.com/ton-username/ensae-comite-design.git
+cd ensae-comite-design
+# Ouvrir index.html dans un navigateur
+```
+
+---
+
+## 🌐 Déploiement
+
+Le site est hebergé sur **GitHub Pages** :  [Accéder au site en ligne](https://ahmadouniass.github.io/Comite-Design)  
+
+
+---
+
+## 👨‍🎨 Contributeur principal
+
+**Site réalisé par Ahmadou Niass**  
+🔗 [GitHub](https://github.com/ahmadouniass)  
+📍 Comité Design ENSAE Dakar
+
+---
+
+## 📬 Contact
+
+- Email : designcomite511@gmail.com
+
+---
+
+## 📄 Licence
+
+Projet open source sous licence MIT.
+
 
 ---

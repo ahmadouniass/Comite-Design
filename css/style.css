@@ -1,0 +1,423 @@
+/* Style global */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #0f172a, #1e293b);
+    color: white;
+}
+
+/* Header Landing */
+.landing-header {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+}
+
+.landing-content .logo {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+.landing-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.landing-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #cbd5e1;
+}
+
+/* Groupement des boutons */
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Style unifié pour tous les boutons */
+.action-button {
+    padding: 1rem 2rem;
+    width: 220px; /* ➔ Taille identique pour tous */
+    text-align: center;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    color: white;
+}
+
+/* Styles spécifiques par type */
+.explore-button {
+    background-color: #6366f1;
+}
+.explore-button:hover {
+    background-color: #4f46e5;
+    transform: scale(1.05);
+}
+
+.idea-button {
+    background-color: #22c55e;
+}
+.idea-button:hover {
+    background-color: #16a34a;
+    transform: scale(1.05);
+}
+
+.order-button {
+    background-color: #f59e0b;
+}
+.order-button:hover {
+    background-color: #d97706;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .landing-content h1 {
+        font-size: 2rem;
+    }
+    .landing-content p {
+        font-size: 1rem;
+    }
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}/* Header de la boîte à idées */
+.idea-header {
+    background: linear-gradient(145deg, #0f172a, #1e293b);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.logo-container .logo {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.nav-container nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+}
+
+.nav-container nav ul li {
+    margin: 0 10px;
+}
+
+.nav-container nav ul li a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-container nav ul li a:hover,
+.nav-container nav ul li a.active {
+    color: #22c55e;
+}
+
+/* Citation */
+.quote-section {
+    background: #1e293b;
+    text-align: center;
+    padding: 2rem;
+}
+
+.quote {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    color: #facc15;
+}
+
+/* Formulaire */
+.idea-form-section {
+    background: #334155;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+#idea-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#idea-input {
+    width: 80%;
+    max-width: 500px;
+    padding: 1rem;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+}
+
+#idea-form button {
+    padding: 1rem 2rem;
+    background-color: #22c55e;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#idea-form button:hover {
+    background-color: #16a34a;
+    transform: scale(1.05);
+}
+
+/* Message après envoi */
+#message {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #38bdf8;
+}
+
+/* Liste des idées */
+.submitted-ideas {
+    background: #475569;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.submitted-ideas h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 2rem 0;
+}
+
+.idea-item {
+    background: #0f172a;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    color: #e0f2fe;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+/* Responsive ajustements */
+@media (max-width: 768px) {
+    #idea-input {
+        width: 90%;
+    }
+}
+
+/* Animations d'arrivée */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Application spécifique */
+.animate-logo {
+    animation: fadeInDown 1s ease forwards;
+}
+
+.animate-title {
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.3s;
+}
+
+.animate-text {
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.6s;
+}
+
+/* Animation des boutons */
+.buttons a {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+.buttons a:nth-child(1) { animation-delay: 0.8s; }
+.buttons a:nth-child(2) { animation-delay: 1s; }
+.buttons a:nth-child(3) { animation-delay: 1.2s; }
+
+/* Hover dynamique boutons */
+.action-button:hover {
+    transform: scale(1.07) rotate(-1deg);
+}
+
+/* SECTION COMMANDE */
+.commande-section {
+    padding: 5rem 2rem;
+    background-color: #1e293b;
+    color: #e2e8f0;
+  }
+  
+  .commande-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #22c55e;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Info box */
+  .info-box {
+    background-color: #0f172a;
+    border-left: 6px solid #22c55e;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    line-height: 1.7;
+  }
+  
+  /* Formulaire */
+  .commande-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .commande-form label {
+    font-weight: bold;
+    color: #cbd5e1;
+  }
+  
+  .commande-form input[type="text"],
+  .commande-form input[type="email"],
+  .commande-form input[type="date"],
+  .commande-form textarea,
+  .commande-form select {
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Lora', serif;
+    background-color: #334155;
+    color: white;
+    outline: none;
+    transition: background 0.3s ease;
+  }
+  
+  .commande-form input:focus,
+  .commande-form textarea:focus,
+  .commande-form select:focus {
+    background-color: #475569;
+  }
+  
+  .commande-form textarea {
+    resize: vertical;
+  }
+  
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #0f172a;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: 1px solid #22c55e;
+    transition: background 0.3s ease;
+  }
+  
+  .checkbox-group input[type="checkbox"] {
+    accent-color: #22c55e;
+  }
+  
+  .checkbox-group label:hover {
+    background: #22c55e;
+    color: white;
+  }
+  
+  .submit-button {
+    background-color: #22c55e;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #16a34a;
+    transform: scale(1.05);
+  }
+
+  .footer {
+    background-color: #1e293b;
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .footer p {
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: #cbd5e1;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .footer-social a img {
+    width: 28px;
+    height: 28px;
+    opacity: 0.7;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .footer-social a:hover img {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  
+  .footer-credit {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    font-style: italic;
+  }
+  
