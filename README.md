@@ -2,6 +2,10 @@
 
 Bienvenue sur le dépôt du site web du **Comité Design de l'ENSAE**, conçu pour présenter nos créations graphiques, recueillir les idées de la communauté, et permettre des commandes de visuels.
 
+As you all probably saw it there are some api keyss in the repo(my bad my bad)
+La publication ne pouvait se faire que sur githubpages et donc le repo était donc forcémment public 
+Si vous avez une autre alternative à me proposer je suis preneur
+
 ---
 
 ## 🧭 Pages disponibles
@@ -55,7 +59,6 @@ Le site est hebergé sur **GitHub Pages** :  [Accéder au site en ligne](https:/
 
 ## 👨‍🎨 Contributeur principal
 
-**Site réalisé par Ahmadou Niass**  
 🔗 [GitHub](https://github.com/ahmadouniass)  
 📍 Comité Design ENSAE Dakar
 
